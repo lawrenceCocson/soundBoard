@@ -11,7 +11,6 @@ public class GUIDriver extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		ArrayList<SoundPack> soundPacks = new ArrayList<>();
-		Media media = new Media("a");
 		
 		
 		stage.show();
