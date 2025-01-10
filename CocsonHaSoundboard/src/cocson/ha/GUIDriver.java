@@ -22,7 +22,7 @@ public class GUIDriver extends Application {
 		grid.setVgap(10);
 		grid.setAlignment(Pos.BOTTOM_LEFT);
 
-		String[] buttonNames = { "1", "2", "3", "4", "Q", "W", "E", "R", "A", "S", "D", "F", "Z", "X", "C", "V", };
+		String[] buttonNames = { "1", "2", "3", "4", "Q", "W", "E", "R", "A", "S", "D", "F", "Z", "X", "C", "V"};
 
 		for (int row = 0; row < 4; row++) {
 			for (int col = 0; col < 4; col++) {
