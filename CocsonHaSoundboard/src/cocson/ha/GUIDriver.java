@@ -10,17 +10,29 @@ import javafx.scene.media.Media;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class GUIDriver extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		ArrayList<SoundPack> soundPacks = new ArrayList<>();
+		
+		VBox vbox = new VBox(10);
+		
+		Label soundboardname = new Label("SoundBoard");
+		Label sound = new Label("Sound");
+		sound.setAlignment(Pos.CENTER);
+		soundboardname.setAlignment(Pos.CENTER);
+		
+		
 
 		GridPane grid = new GridPane();
 		grid.setHgap(10);
 		grid.setVgap(10);
-		grid.setAlignment(Pos.BOTTOM_LEFT);
+		vbox.setAlignment(Pos.BOTTOM_LEFT);
+		// Button names for each number
 
 		String[] buttonNames = { "1", "2", "3", "4", "Q", "W", "E", "R", "A", "S", "D", "F", "Z", "X", "C", "V"};
 
@@ -35,14 +47,17 @@ public class GUIDriver extends Application {
 					
 
 				});
-				grid.add(button, col, row);
+				grid.add(button,col, row);
 			}
 
 		}
+		
+		
+		vbox.getChildren().addAll(soundboardname, sound, grid);
 
-		Scene scene = new Scene(grid, 400, 400);
+		Scene scene = new Scene(vbox,  400, 400);
 
-		stage.setTitle("4x4 Grid of buttons");
+		
 		stage.setScene(scene);
 
 		stage.show();
