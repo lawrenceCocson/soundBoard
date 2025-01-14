@@ -7,7 +7,6 @@ import java.io.File;
 public class SoundPack {
 	private String name;
 	private File inFile;
-	private File[] fileList;
 	private File[] soundFolder;
 	private String location;
 	
