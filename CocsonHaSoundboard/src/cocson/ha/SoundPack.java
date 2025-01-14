@@ -5,16 +5,31 @@ import java.util.Scanner;
 import java.io.File;
 
 public class SoundPack {
-	private String soundPack;
-	private MediaPlayer[] sounds;
+	private String name;
 	private File inFile;
+	private File[] fileList;
+	private File[] soundFolder;
+	private String location;
 	
-	SoundPack(String sP){
-		soundPack = sP;
-		
-		inFile = new File(sP);
-		
-		// updated SoundPack
+	SoundPack(String n){
+		name = n;
+		location = ("soundPacks\\" + name);
+		inFile = new File(location);
+		soundFolder = inFile.listFiles();
+	}
+	
+	public void showSounds() {
+		for (File file : soundFolder) {
+			System.out.println(file);
+		}
+	}
+	
+	public File[] getSounds() {
+		return soundFolder;
+	}
+	
+	public String getSoundPack() {
+		return name;
 	}
 	
 	

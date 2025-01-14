@@ -13,9 +13,13 @@ public class Pad {
 		return number;
 	}
 	
+	public void setSound(String s) {
+		sound = s;
+	}
+	
 	@Override
 	public String toString() {
-		return ("Pad " + number);
+		return ("Pad " + number + "Plays " + sound);
 	}
 
 }

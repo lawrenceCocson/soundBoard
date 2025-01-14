@@ -19,6 +19,10 @@ public class GUIDriver extends Application {
 	public void start(Stage stage) throws Exception {
 		ArrayList<SoundPack> soundPacks = new ArrayList<>();
 		
+		SoundPack verysickbeats = new SoundPack("verysickbeats");
+		
+		verysickbeats.showSounds();
+		
 		VBox vbox = new VBox(10);
 		
 		Label soundboardname = new Label("SoundBoard");
