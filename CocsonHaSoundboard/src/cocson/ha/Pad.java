@@ -7,7 +7,7 @@ public class Pad {
 	Pad(int n, String s){
 		number = n;
 		sound = s;
-	}
+	} //aa
 	
 	public int getPad(){
 		return number;
