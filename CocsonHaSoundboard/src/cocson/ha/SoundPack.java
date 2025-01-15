@@ -1,6 +1,8 @@
 package cocson.ha;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.File;
 
@@ -23,12 +25,38 @@ public class SoundPack {
 		}
 	}
 	
-	public File[] getSounds() {
-		return soundFolder;
+	public String[] getSounds() {
+		String[] soundNames = new String[16];
+		for (int i = 0; i < soundFolder.length; i++) {
+			String a = soundFolder[i].toString();
+			int start = a.lastIndexOf("\\");
+			String name = a.substring(start+1);
+			
+			soundNames[i] = name;
+		}
+		
+		return soundNames;
 	}
 	
 	public String getSoundPack() {
 		return name;
+	}
+	
+	public void sortSounds() {
+		File[] tempSorted = new File[16];
+		
+		for (int i = 0; i < soundFolder.length; i++) {
+			String a = soundFolder[i].toString();
+			int start = a.lastIndexOf("\\");
+			int end = a.lastIndexOf("_");
+			String sNum = a.substring(start+1, end);
+			
+			tempSorted[Integer.parseInt(sNum)-1] = soundFolder[i];
+			
+			soundFolder[i] = tempSorted[i];	
+		}
+		
+		
 	}
 	
 	

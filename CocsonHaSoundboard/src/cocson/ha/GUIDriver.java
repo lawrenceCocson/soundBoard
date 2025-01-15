@@ -20,14 +20,15 @@ public class GUIDriver extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		SoundPack verysickbeats = new SoundPack("verysickbeats");
+		verysickbeats.sortSounds();
+		verysickbeats.showSounds();
 		
 		File soundPackFolder = new File("soundPacks");
 		File[] soundPacks = soundPackFolder.listFiles();
 		
-		System.out.println(soundPacks[0]);
+		
 		
 		VBox vbox = new VBox(10);
-		
 		
 		Label soundboardname = new Label("SoundBoard");
 		Label sound = new Label("Sound");
@@ -58,11 +59,17 @@ public class GUIDriver extends Application {
 				button.setStyle("-fx-font-size: 2em; ");
 				buttons[row * 4 + col] = button;
 				
-
+				for (int i = 15; i < 0; i--) {
+					String[] a = verysickbeats.getSounds();
+					
+					Pad pad = new Pad(i, a[i]);
+					pads[i] = pad;
+				}
+				
 				button.setOnAction(e -> {
-
-					System.out.println(button.getText());
-
+					for (Pad pad : pads) {
+						System.out.println(pad);
+					}
 					
 
 				});
