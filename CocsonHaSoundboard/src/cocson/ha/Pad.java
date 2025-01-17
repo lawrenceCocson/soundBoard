@@ -30,6 +30,10 @@ public class Pad {
 		soundPlayer.play();
 	}
 	
+	public void getSound() {
+		System.out.println(sound);
+	}
+	
 	@Override
 	public String toString() {
 		return ("Pad " + number + "Plays " + sound);

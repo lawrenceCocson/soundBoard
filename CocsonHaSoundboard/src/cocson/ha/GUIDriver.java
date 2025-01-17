@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -14,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import java.util.Scanner;
 import java.io.File;
+import java.nio.file.Paths;
 
 public class GUIDriver extends Application {
 
@@ -23,10 +26,22 @@ public class GUIDriver extends Application {
 		verysickbeats.sortSounds();
 		verysickbeats.showSounds();
 		
+		//Pad test = new Pad(1, "soundPacks\\verysickbeats\\02_snare");
+		
+		//test.playSound();
+		
+		
+
+		for (String a : verysickbeats.getSounds()) {
+			System.out.println(a);
+		}
+		
 		File soundPackFolder = new File("soundPacks");
 		File[] soundPacks = soundPackFolder.listFiles();
 		
-		
+		for (File f: soundPacks) {
+			System.out.println(f);
+		}
 		
 		VBox vbox = new VBox(10);
 		
@@ -51,7 +66,27 @@ public class GUIDriver extends Application {
 
 		String[] buttonNames = { "1", "2", "3", "4", "Q", "W", "E", "R", "A", "S", "D", "F", "Z", "X", "C", "V"};
 		Button[] buttons = new Button[16];
-		Pad[] pads = new Pad[16];
+		Pad[] pads = new Pad[16];		
+		
+		
+		
+	//	String mediaUri = Paths.get("soundPacks", "verysickbeats", "02_snare.wav").toUri().toString();
+		String musicFile =  ".\\soundPacks\\verysickbeats\\02_snare.wav";
+		String test = new File(musicFile).toURI().toString();
+		
+		
+		Pad test1 = new Pad (1, test);
+		
+		test1.playSound();
+		
+		System.out.println(test);
+	//	System.out.println(mediaUri);
+		Media testSound = new Media(test);
+		MediaPlayer testPlayer = new MediaPlayer(testSound);
+		
+		
+		
+		
 
 		for (int row = 0; row < 4; row++) {
 			for (int col = 0; col < 4; col++) {
@@ -61,6 +96,7 @@ public class GUIDriver extends Application {
 				
 				for (int i = 15; i < 0; i--) {
 					String[] a = verysickbeats.getSounds();
+					
 					
 					Pad pad = new Pad(i, a[i]);
 					pads[i] = pad;
