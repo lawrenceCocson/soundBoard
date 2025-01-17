@@ -71,22 +71,12 @@ public class GUIDriver extends Application {
 		
 		
 	//	String mediaUri = Paths.get("soundPacks", "verysickbeats", "02_snare.wav").toUri().toString();
-		String musicFile =  ".\\soundPacks\\verysickbeats\\02_snare.wav";
-		String test = new File(musicFile).toURI().toString();
+	//	String musicFile =  ".\\soundPacks\\verysickbeats\\02_snare.wav";
+	//	String test = new File(musicFile).toURI().toString();
+	//		
 		
-		
-		Pad test1 = new Pad (1, test);
-		
-		test1.playSound();
-		
-		System.out.println(test);
-	//	System.out.println(mediaUri);
-		Media testSound = new Media(test);
-		MediaPlayer testPlayer = new MediaPlayer(testSound);
-		
-		
-		
-		
+		Pad test = new Pad(0, verysickbeats.getSounds()[0]);
+		test.playSound();
 
 		for (int row = 0; row < 4; row++) {
 			for (int col = 0; col < 4; col++) {
@@ -94,17 +84,15 @@ public class GUIDriver extends Application {
 				button.setStyle("-fx-font-size: 2em; ");
 				buttons[row * 4 + col] = button;
 				
-				for (int i = 15; i < 0; i--) {
-					String[] a = verysickbeats.getSounds();
-					
-					
-					Pad pad = new Pad(i, a[i]);
-					pads[i] = pad;
-				}
+				System.out.println(verysickbeats.getSounds()[row * 4 + col]);
+				
+				
+				//Pad pad = new Pad((row * 4 + col), verysickbeats.getSounds()[(row * 4 + col)]);
+				//pads[row * 4 + col] = pad;
 				
 				button.setOnAction(e -> {
-					for (Pad pad : pads) {
-						System.out.println(pad);
+					for (Pad padBtn : pads) {
+						System.out.println(padBtn);
 					}
 					
 

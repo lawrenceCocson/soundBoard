@@ -26,18 +26,15 @@ public class SoundPack {
 	}
 	
 	public String[] getSounds() {
-		String[] soundNames = new String[16];
-		for (int i = 0; i < soundFolder.length; i++) {
-			String a = soundFolder[i].toString();
-			int start = a.lastIndexOf("\\");
-			String name = a.substring(start+1);
-			
-			soundNames[i] = name;
+		String[] soundUris = new String[16];
+		for (File file : soundFolder) {
+			for (int i = 0; i < 15; i++) {
+				soundUris[i] = file.toURI().toString();
+			}
 		}
-		
-		return soundNames;
+		return soundUris;
 	}
-	
+		
 	public String getSoundPack() {
 		return name;
 	}
