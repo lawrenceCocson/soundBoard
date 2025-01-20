@@ -32,8 +32,12 @@ public class Pad {
 		soundPlayer.play();
 	}
 	
-	public void getSound() {
-		System.out.println(sound);
+	public String getSound() {
+		int start = sound.lastIndexOf("_");
+
+		String soundName = sound.substring(start+1, sound.length());	
+		
+		return soundName;
 	}
 	
 	public void resetSound() {

@@ -24,11 +24,6 @@ public class GUIDriver extends Application {
 	public void start(Stage stage) throws Exception {
 		SoundPack verysickbeats = new SoundPack("verysickbeats");
 		verysickbeats.sortSounds();
-		verysickbeats.showSounds();
-		
-		//Pad test = new Pad(1, "soundPacks\\verysickbeats\\02_snare");
-		
-		//test.playSound();		
 		
 		File soundPackFolder = new File("soundPacks");
 		File[] soundPacks = soundPackFolder.listFiles();
@@ -39,7 +34,14 @@ public class GUIDriver extends Application {
 		Label soundboardname = new Label("SoundBoard");
 		Label sound = new Label("Sound");
 		HBox arrows = new HBox(2);
+		
+		
 		Button left = new Button("<-----");
+		
+		left.setOnAction(e -> {
+			
+		});		
+		
 		Button right = new Button("----->");
 		
 		arrows.getChildren().addAll(left, right);
@@ -81,10 +83,9 @@ public class GUIDriver extends Application {
 				
 				button.setOnAction(e -> {
 					for (Pad padBtn : pads) {
-						int index = pad.getPad();
 						pad.playSound();
 						pad.resetSound();
-						pad.getSound();
+						sound.setText(pad.getSound());
 					}
 					
 
