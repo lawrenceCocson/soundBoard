@@ -41,7 +41,7 @@ public class GUIDriver extends Application {
 		Button left = new Button("<-----");
 		
 		left.setOnAction(e -> {
-			packIndex -= 1;
+			
 		});		
 		
 		Button right = new Button("----->");
