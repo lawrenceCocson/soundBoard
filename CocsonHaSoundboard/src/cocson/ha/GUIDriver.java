@@ -25,6 +25,8 @@ public class GUIDriver extends Application {
 		SoundPack verysickbeats = new SoundPack("verysickbeats");
 		verysickbeats.sortSounds();
 		
+		int packIndex = 0;
+		
 		File soundPackFolder = new File("soundPacks");
 		File[] soundPacks = soundPackFolder.listFiles();
 		
@@ -39,7 +41,7 @@ public class GUIDriver extends Application {
 		Button left = new Button("<-----");
 		
 		left.setOnAction(e -> {
-			
+			packIndex -= 1;
 		});		
 		
 		Button right = new Button("----->");
