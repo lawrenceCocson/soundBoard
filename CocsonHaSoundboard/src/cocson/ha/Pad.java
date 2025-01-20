@@ -1,5 +1,7 @@
 package cocson.ha;
 
+import java.time.Duration;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -32,6 +34,10 @@ public class Pad {
 	
 	public void getSound() {
 		System.out.println(sound);
+	}
+	
+	public void resetSound() {
+		soundPlayer.seek(javafx.util.Duration.ZERO);
 	}
 	
 	@Override

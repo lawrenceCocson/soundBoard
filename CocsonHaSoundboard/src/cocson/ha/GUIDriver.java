@@ -28,20 +28,11 @@ public class GUIDriver extends Application {
 		
 		//Pad test = new Pad(1, "soundPacks\\verysickbeats\\02_snare");
 		
-		//test.playSound();
-		
-		
-
-		for (String a : verysickbeats.getSounds()) {
-			System.out.println(a);
-		}
+		//test.playSound();		
 		
 		File soundPackFolder = new File("soundPacks");
 		File[] soundPacks = soundPackFolder.listFiles();
 		
-		for (File f: soundPacks) {
-			System.out.println(f);
-		}
 		
 		VBox vbox = new VBox(10);
 		
@@ -81,16 +72,19 @@ public class GUIDriver extends Application {
 				Button button = new Button(buttonNames[row * 4 + col]);
 				button.setStyle("-fx-font-size: 2em; ");
 				buttons[row * 4 + col] = button;
+					
 				
-				System.out.println(verysickbeats.getSounds()[row * 4 + col]);
+				//System.out.println(verysickbeats.getSounds());
 				
-				
-				//Pad pad = new Pad((row * 4 + col), verysickbeats.getSounds()[(row * 4 + col)]);
-				//pads[row * 4 + col] = pad;
+				Pad pad = new Pad((row * 4 + col), verysickbeats.getSounds()[(row * 4 + col)]);
+				pads[row * 4 + col] = pad;
 				
 				button.setOnAction(e -> {
 					for (Pad padBtn : pads) {
-						System.out.println(padBtn);
+						int index = pad.getPad();
+						pad.playSound();
+						pad.resetSound();
+						pad.getSound();
 					}
 					
 

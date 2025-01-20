@@ -27,11 +27,9 @@ public class SoundPack {
 	
 	public String[] getSounds() {
 		String[] soundUris = new String[16];
-		for (File file : soundFolder) {
-			for (int i = 0; i < 15; i++) {
-				soundUris[i] = file.toURI().toString();
+			for (int i = 0; i < 16; i++) {
+				soundUris[i] = soundFolder[i].toURI().toString();
 			}
-		}
 		return soundUris;
 	}
 		
