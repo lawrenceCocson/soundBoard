@@ -75,8 +75,6 @@ public class GUIDriver extends Application {
 	//	String test = new File(musicFile).toURI().toString();
 	//		
 		
-		Pad test = new Pad(0, verysickbeats.getSounds()[0]);
-		test.playSound();
 
 		for (int row = 0; row < 4; row++) {
 			for (int col = 0; col < 4; col++) {
