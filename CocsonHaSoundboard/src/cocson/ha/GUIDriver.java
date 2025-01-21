@@ -29,6 +29,8 @@ public class GUIDriver extends Application {
 		File[] soundPacks = soundPackFolder.listFiles();
 		SoundPackIndex packIndex = new SoundPackIndex(soundPacks);
 		
+		System.out.println(soundPacks[packIndex.getIndex()]);
+		
 		
 		
 		
@@ -43,7 +45,7 @@ public class GUIDriver extends Application {
 		
 		left.setOnAction(e -> {
 			packIndex.left();
-			System.out.println(packIndex.getIndex());
+			System.out.println(soundPacks[packIndex.getIndex()]);
 		});		
 		
 		Button right = new Button("----->");
