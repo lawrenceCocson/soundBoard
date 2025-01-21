@@ -18,7 +18,7 @@ public class SoundPackIndex {
 	public void left(){
 		index -= 1;
 		if (index < 0) {
-			index = (int) inSoundFolder.length;
+			index = (int) inSoundFolder.length-1;
 		}
 		
 	}

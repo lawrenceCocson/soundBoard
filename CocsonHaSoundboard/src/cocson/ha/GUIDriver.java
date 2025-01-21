@@ -30,6 +30,8 @@ public class GUIDriver extends Application {
 		SoundPackIndex packIndex = new SoundPackIndex(soundPacks);
 		
 		
+		
+		
 		VBox vbox = new VBox(10);
 		
 		Label soundboardname = new Label("SoundBoard");
@@ -41,6 +43,7 @@ public class GUIDriver extends Application {
 		
 		left.setOnAction(e -> {
 			packIndex.left();
+			System.out.println(packIndex.getIndex());
 		});		
 		
 		Button right = new Button("----->");
