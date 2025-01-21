@@ -4,23 +4,33 @@ import java.io.File;
 
 public class SoundPackIndex {
 	private int index;
-	private File[] inSoundFolder;
+	private SoundPack[] soundPacks;
 	
-	SoundPackIndex(File[] inFile){
+	SoundPackIndex(SoundPack[] sp){
 		index = 0;
-		inSoundFolder = inFile;
+		soundPacks = sp;
 	}
 	
 	public int getIndex() {
 		return index;
 	}
 	
+	public SoundPack soundPack() {		
+		return soundPacks[index];
+	}
+	
 	public void left(){
 		index -= 1;
 		if (index < 0) {
-			index = (int) inSoundFolder.length-1;
+			index = (int) soundPacks.length-1;
 		}
-		
+	}
+	
+	public void right(){
+		index += 1;
+		if (index > soundPacks.length-1) {
+			index = 0;
+		}
 	}
 
 }

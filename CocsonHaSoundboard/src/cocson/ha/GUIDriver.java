@@ -19,20 +19,26 @@ import java.io.File;
 import java.nio.file.Paths;
 
 public class GUIDriver extends Application {
-
+	
+	static File[] soundPacks;
+	static Pad[] pads = new Pad[16];	
+	
 	@Override
 	public void start(Stage stage) throws Exception {
 		SoundPack verysickbeats = new SoundPack("verysickbeats");
 		verysickbeats.sortSounds();
 		
 		File soundPackFolder = new File("soundPacks");
-		File[] soundPacks = soundPackFolder.listFiles();
-		SoundPackIndex packIndex = new SoundPackIndex(soundPacks);
-		
-		System.out.println(soundPacks[packIndex.getIndex()]);
+		soundPacks = soundPackFolder.listFiles();
 		
 		
+		SoundPack[] packs = new SoundPack[soundPacks.length];
+				
+		for (int i = 0; i < soundPacks.length; i++) {
+			packs[i] = new SoundPack(soundPacks[i].toString().substring(soundPacks[i].toString().lastIndexOf("\\") + 1));
+		}
 		
+		SoundPackIndex packIndex = new SoundPackIndex(packs);
 		
 		VBox vbox = new VBox(10);
 		
@@ -44,11 +50,31 @@ public class GUIDriver extends Application {
 		Button left = new Button("<-----");
 		
 		left.setOnAction(e -> {
-			packIndex.left();
-			System.out.println(soundPacks[packIndex.getIndex()]);
+			packIndex.left();		
+			System.out.println(packIndex.soundPack().getSoundPack());	
+			
+			for (int row = 0; row < 4; row++) {
+				for (int col = 0; col < 4; col++) {
+					Pad pad = new Pad((row * 4 + col), packIndex.soundPack().getSounds()[(row * 4 + col)]);
+					pads[row * 4 + col] = pad;
+				}
+			}
+			
 		});		
 		
 		Button right = new Button("----->");
+		right.setOnAction(e -> {
+			packIndex.right();
+			System.out.println(packIndex.soundPack().getSoundPack());
+			
+			for (int row = 0; row < 4; row++) {
+				for (int col = 0; col < 4; col++) {
+					Pad pad = new Pad((row * 4 + col), packIndex.soundPack().getSounds()[(row * 4 + col)]);
+					pads[row * 4 + col] = pad;
+				}
+			}
+			
+		});		
 		
 		arrows.getChildren().addAll(left, right);
 		arrows.setAlignment(Pos.CENTER);
@@ -65,14 +91,8 @@ public class GUIDriver extends Application {
 
 		String[] buttonNames = { "1", "2", "3", "4", "Q", "W", "E", "R", "A", "S", "D", "F", "Z", "X", "C", "V"};
 		Button[] buttons = new Button[16];
-		Pad[] pads = new Pad[16];		
+				
 		
-		
-		
-	//	String mediaUri = Paths.get("soundPacks", "verysickbeats", "02_snare.wav").toUri().toString();
-	//	String musicFile =  ".\\soundPacks\\verysickbeats\\02_snare.wav";
-	//	String test = new File(musicFile).toURI().toString();
-	//		
 		
 
 		for (int row = 0; row < 4; row++) {
@@ -80,11 +100,8 @@ public class GUIDriver extends Application {
 				Button button = new Button(buttonNames[row * 4 + col]);
 				button.setStyle("-fx-font-size: 2em; ");
 				buttons[row * 4 + col] = button;
-					
-				
-				//System.out.println(verysickbeats.getSounds());
-				
-				Pad pad = new Pad((row * 4 + col), verysickbeats.getSounds()[(row * 4 + col)]);
+								
+				Pad pad = new Pad((row * 4 + col), packIndex.soundPack().getSounds()[(row * 4 + col)]);
 				pads[row * 4 + col] = pad;
 				
 				button.setOnAction(e -> {
@@ -93,8 +110,6 @@ public class GUIDriver extends Application {
 						pad.resetSound();
 						sound.setText(pad.getSound());
 					}
-					
-
 				});
 				grid.add(button,col, row);
 			}
